@@ -99,3 +99,16 @@ export const userSlice = createSlice({
 ---
 
 **reduxToolkit** позволяет оптимизировать работу с состояниями (идет загрущка , загрузка удачна , ошибка)
+
+ActionCreators.ts : 
+```typescript
+export const fetchUsers = createAsyncThunk(
+  'user/ferchAll', // Название фанка
+  async (_, thunkAPI) => {
+    //Колбек для выполнения запроса
+    const response = await axios.get<IUser[]>('https://jsonplaceholder.typicode.com/users')
+    return response.data
+  }
+)
+```
+---

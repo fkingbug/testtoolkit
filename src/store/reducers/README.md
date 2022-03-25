@@ -100,7 +100,8 @@ export const userSlice = createSlice({
 
 **reduxToolkit** позволяет оптимизировать работу с состояниями (идет загрущка , загрузка удачна , ошибка)
 
-ActionCreators.ts : 
+ActionCreators.ts :
+
 ```typescript
 export const fetchUsers = createAsyncThunk(
   'user/ferchAll', // Название фанка
@@ -111,4 +112,30 @@ export const fetchUsers = createAsyncThunk(
   }
 )
 ```
+
 ---
+
+Для того чтобы toolkit понял в каком состоянии приложение (идет загрущка , загрузка удачна , ошибка)
+в UseSlice естьполе ExtraReducers. ToolKit Создает уникальные имена для состояний и делает actionCreator
+
+```typescript
+export const userSlice = createSlice({
+  name: 'user',
+  initialState,
+  reducers: {},
+  extraReducers: {
+    [fetchUsers.fulfilled.type]: (state, action: PayloadAction<IUser[]>) => {
+      state.isLoading = false
+      state.error = ''
+      state.users = action.payload
+    },
+    [fetchUsers.pending.type]: (state) => {
+      state.isLoading = true
+    },
+    [fetchUsers.rejected.type]: (state, action: PayloadAction<string>) => {
+      state.isLoading = false
+      state.error = action.payload
+    },
+  },
+})
+```

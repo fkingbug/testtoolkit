@@ -115,8 +115,10 @@ export const fetchUsers = createAsyncThunk(
 
 ---
 
-Для того чтобы toolkit понял в каком состоянии приложение (идет загрущка , загрузка удачна , ошибка)
+Для того чтобы toolkit понял в каком состоянии приложение (идет загрузка , загрузка удачна , ошибка)
 в UseSlice естьполе ExtraReducers. ToolKit Создает уникальные имена для состояний и делает actionCreator
+
+UseSlice.ts
 
 ```typescript
 export const userSlice = createSlice({
@@ -139,3 +141,9 @@ export const userSlice = createSlice({
   },
 })
 ```
+
+- fulfilled - Данные получены
+- pending - Ожидание
+- rejected - Ошибка
+
+---

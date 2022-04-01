@@ -13,7 +13,7 @@ export const userAPI = createApi({
 - baseQuery - Линк для запроса
 - endpoints - фунцкия которая возвращает объект
 
-* fetchAllUsers - Название метода с помощью которого можно получать или изменять данные
+  - fetchAllUsers - Название метода с помощью которого можно получать или изменять данные
 
-- build.query - получение данных (GET)
-- build.mutation - изменение данных (POST / PUT / DELETE)
+    - build.query - получение данных (GET)
+    - build.mutation - изменение данных (POST / PUT / DELETE)
